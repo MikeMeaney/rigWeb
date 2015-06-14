@@ -59,6 +59,7 @@ app.get('/status', function(req, res){
 app.get('/data', function(req,res){
   console.log("------ GET req @ " + req.path +" ------" )
   console.log(req.query);
+  console.log(req.query.inTime);
 
   //Save to Mongo DB
   var newRigData = RigData({
