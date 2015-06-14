@@ -6,7 +6,9 @@
 //Granted this isn't the BEST way of doing this, and Express can
 //do more, but the issue is that rig client is based off Processing.
 //And Processing sucks, but man-alive, does it have a reliable UART
-//libarary. It's HTTP stuff blows.
+//Library. It's HTTP stuff blows.
+
+//This branch adds the ability to bind Rig clients to the server
 
 //The Bare bones of it
 var express = require('express'); //Our humble Hero...
@@ -40,14 +42,15 @@ db.once('open', function(callback){
 
 //This is the Root level directory, not sure what to do with it yet
 app.get('/', function (req, res) {
+  console.log("Request @ /");
   res.send('Hello World!');
 });
 
 //The rigs status route for getting state and sub-state data
 app.get('/status', function(req, res){
    console.log("------ GET req @ " + req.path +" ------" )
-   console.log("theStruggle: " + req.query.theStruggle);
-   console.log("derpNumber is: " + req.query.derpNumber)
+   // console.log("theStruggle: " + req.query.theStruggle); //Used for proof...
+   // console.log("derpNumber is: " + req.query.derpNumber) //...of concept.
    console.log(req.query);
    res.json("Prameters = " + req.query);
 });
@@ -59,10 +62,10 @@ app.get('/data', function(req,res){
 
   //Save to Mongo DB
   var newRigData = RigData({
-    RigID : "Gonzo",
+    RigID : req.query.rig,
     Data: {
-      durration : req.query.derpNumber.toString(),
-      timeIn : "Back then",
+      durration : req.query.durration,
+      timeIn : req.query.inTime,
       timeOut : "Just now",
     }
   })

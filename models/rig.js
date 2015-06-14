@@ -18,7 +18,6 @@ var rigSchema = new Schema({
 		state : String,
 		sub_state : String
 	},
-
 });
 
 //The Schema does nothing morh boo right now
