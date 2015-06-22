@@ -14,8 +14,8 @@ var Schema = mongoose.Schema;
 //Create Rig Data Schema
 var rigDataSchema = new Schema({
 	RigID : String,
+	PID : String,
 	Data : {
-		PIN : String,
 		timeCreated: Date,
 		timeIn : String,
 		timeOut : String,

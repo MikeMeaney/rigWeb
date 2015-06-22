@@ -14,10 +14,8 @@ var Schema = mongoose.Schema;
 //Create a Rig Schema
 var rigSchema = new Schema({
 	ID : String,
-	Status : {
-		state : String,
-		sub_state : String
-	},
+	CurrentPID : String,
+	State : String,
 });
 
 //The Schema does nothing morh boo right now
